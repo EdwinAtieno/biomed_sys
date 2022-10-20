@@ -1,11 +1,8 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
             "sha256": "e400b6f6e921d326435a6a42959510dbd264e9689464e00060f3652cebb50ff3"
-=======
             "sha256": "ff5a166b698b6a87f3a4a9411425550ad1cfe87f5fcd30eadf0b44233990857b"
->>>>>>> 16413cf (feat(backend-setUP): backend setup)
         },
         "pipfile-spec": 6,
         "requires": {
@@ -28,7 +25,6 @@
             "markers": "python_version >= '3.7'",
             "version": "==3.5.2"
         },
-<<<<<<< HEAD
         "black": {
             "hashes": [
                 "sha256:14ff67aec0a47c424bc99b71005202045dc09270da44a27848d534600ac64fc7",
@@ -117,8 +113,6 @@
             ],
             "version": "==0.3.6"
         },
-=======
->>>>>>> 16413cf (feat(backend-setUP): backend setup)
         "dj-database-url": {
             "hashes": [
                 "sha256:ccf3e8718f75ddd147a1e212fca88eecdaa721759ee48e38b485481c77bca3dc",
@@ -135,7 +129,6 @@
             "index": "pypi",
             "version": "==4.1.2"
         },
-<<<<<<< HEAD
         "django-cors-headers": {
             "hashes": [
                 "sha256:37e42883b5f1f2295df6b4bba96eb2417a14a03270cb24b2a07f021cd4487cf4",
@@ -553,8 +546,6 @@
             "markers": "python_version >= '3.7'",
             "version": "==65.5.0"
         },
-=======
->>>>>>> 16413cf (feat(backend-setUP): backend setup)
         "sqlparse": {
             "hashes": [
                 "sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34",
@@ -563,7 +554,6 @@
             "markers": "python_version >= '3.5'",
             "version": "==0.4.3"
         },
-<<<<<<< HEAD
         "toml": {
             "hashes": [
                 "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b",
@@ -662,7 +652,6 @@
             ],
             "index": "pypi",
             "version": "==6.2.0"
-=======
         "tzdata": {
             "hashes": [
                 "sha256:74da81ecf2b3887c94e53fc1d466d4362aaf8b26fc87cda18f22004544694583",
@@ -670,7 +659,6 @@
             ],
             "markers": "sys_platform == 'win32'",
             "version": "==2022.4"
->>>>>>> 16413cf (feat(backend-setUP): backend setup)
         }
     },
     "develop": {}
