@@ -16,6 +16,6 @@ class IsObjectOwnerOrAdmin(BasePermission):
     def has_object_permission(
         self, request: Request, view: APIView, obj: Any
     ) -> bool:
-        if obj.user == request.user or request.user.is_superuser:
+        if obj == request.user or request.user.is_superuser:
             return True
         return False
