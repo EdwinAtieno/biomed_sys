@@ -27,7 +27,7 @@ class TimeStampedModel(models.Model):
 
 
 class IDModel(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=255, editable=False)
 
     class Meta:
         abstract = True

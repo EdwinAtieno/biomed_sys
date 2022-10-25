@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 from typing import List
 
@@ -26,9 +27,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     "django_filters",
     "rest_framework",
     "app.users",
+    "app.authentication",
     "app.suppliers",
     "app.repair",
     "app.equipments",
@@ -134,6 +138,12 @@ CORS_ALLOWED_ORIGINS: List[str] = []
 CORS_ALLOWED_ORIGIN_REGEXES: List[str] = []
 CORS_URLS_REGEX = r"^/api/.*$"
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=14),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+}
 
 # Distance Matrix API Settings
 GOOGLE_DISTANCE_MATRIX_API_KEY = config("GOOGLE_DISTANCE_MATRIX_API_KEY", "")

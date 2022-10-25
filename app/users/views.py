@@ -4,13 +4,11 @@ from django.contrib.auth import (
     authenticate,
     get_user_model,
 )
-from django.shortcuts import render
 from rest_framework import (
     exceptions,
     generics,
 )
 from rest_framework.permissions import (
-    AllowAny,
     IsAdminUser,
     IsAuthenticated,
 )

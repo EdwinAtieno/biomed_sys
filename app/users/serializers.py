@@ -72,7 +72,7 @@ class UserSerializer(serializers.ModelSerializer):
         )
         read_only_fields = ("id", "roles")
 
-    def get_role(self, obj: Any) -> Any:
+    def get_roles(self, obj: Any) -> Any:
         return list(obj.groups.values_list("name", flat=True))
 
     def validate_phone_number(self, phone_number: Any) -> Any:
@@ -105,7 +105,7 @@ class UserSerializer(serializers.ModelSerializer):
                     )
             return role
         raise serializers.ValidationError(
-            "Invalid role. Only {", ".join(USER_GROUPS)} are allowed"
+            f"Invalid role. Only { ', '.join(USER_GROUPS)} are allowed"
         )
 
     def create(self, validated_data: Any) -> Any:
