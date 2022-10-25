@@ -27,7 +27,7 @@ class TimeStampedModel(models.Model):
 
 
 class IDModel(models.Model):
-    id = models.UUIDField(primary_key=True, default=255, editable=False)
+    id = models.UUIDField(primary_key=True, max_length=255, editable=False)
 
     class Meta:
         abstract = True
@@ -37,8 +37,6 @@ class IDModel(models.Model):
             is_unique = False
             while not is_unique:
                 id = uuid4().hex
-                is_unique = not self.__class__.objects.filter(
-                    id=self.id
-                ).exists()
+                is_unique = not self.__class__.objects.filter(id=id).exists()
             self.id = id
         return super().save(*args, **kwargs)
