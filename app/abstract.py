@@ -4,6 +4,8 @@ from uuid import uuid4
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from utils import generate_number
+
 
 class TimeStampedModel(models.Model):
     created_at = models.DateTimeField(
@@ -38,5 +40,26 @@ class IDModel(models.Model):
             while not is_unique:
                 id = uuid4().hex
                 is_unique = not self.__class__.objects.filter(id=id).exists()
+            self.id = id
+        return super().save(*args, **kwargs)
+
+
+class IntegerIDModel(models.Model):
+    """
+    An abstract base class that allows us to generate a unique integer id for each model.
+    """
+
+    id = models.CharField(primary_key=True, max_length=255, editable=False)
+
+    class Meta:
+        abstract = True
+
+    def save(self, *args: Any, **kwargs: Any) -> Any:
+        if not self.id:
+            is_unique = False
+            while not is_unique:
+                id = generate_number(num_digits=12)
+                is_unique = not self.__class__.objects.filter(id=id).exists()
+
             self.id = id
         return super().save(*args, **kwargs)

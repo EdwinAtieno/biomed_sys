@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "app.users",
     "app.authentication",
     "app.suppliers",
+    "app.departments",
     "app.repair",
     "app.equipments",
 ]
