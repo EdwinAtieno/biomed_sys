@@ -29,6 +29,12 @@ class UserAdmin(DjangoUserAdmin):
         "staff_number",
     )
     readonly_fields = ("created_at", "updated_at")
+    search_fields = (
+        "first_name",
+        "middle_name",
+        "staff_number",
+        "phone_number",
+    )
 
     fieldsets = (
         (
