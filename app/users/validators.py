@@ -28,3 +28,16 @@ def staff_number_validator(value: str) -> Any:
         return value
 
     raise ValidationError("Invalid staff number")
+
+
+def asset_number_validator(value: str) -> Any:
+    """
+    Validate asset number.
+    """
+
+    if re.match(  # noqa W605 type: ignore["return-value"]
+        r"^NE[0-9]{5}$", value
+    ):
+        return value
+
+    raise ValidationError("Invalid asset number")

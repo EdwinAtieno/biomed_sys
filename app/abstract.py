@@ -4,7 +4,10 @@ from uuid import uuid4
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from utils import generate_number
+from utils import (
+    generate_asset_number,
+    generate_number,
+)
 
 
 class TimeStampedModel(models.Model):
@@ -63,3 +66,44 @@ class IntegerIDModel(models.Model):
 
             self.id = id
         return super().save(*args, **kwargs)
+
+
+class EquipmentAssetNumberModel(models.Model):
+    """
+    An abstract base class that allows us to generate a unique integer id for each model.
+    """
+
+    asset_number = models.CharField(
+        primary_key=True,
+        max_length=255,
+        editable=False,
+    )
+
+    class Meta:
+        abstract = True
+
+    def save(self, *args: Any, **kwargs: Any) -> Any:
+        if not self.asset_number:
+            is_unique = False
+            while not is_unique:
+                asset_number = generate_asset_number(num_digits=5)
+                is_unique = not self.__class__.objects.filter(
+                    asset_number=asset_number
+                ).exists()
+
+            self.asset_number = asset_number
+        return super().save(*args, **kwargs)
+
+
+class SoftDeleteModel(models.Model):
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        abstract = True
+
+    def delete(self, *args: Any, **kwargs: Any) -> Any:
+        self.is_active = False
+        self.save()
+
+    def hard_delete(self, *args: Any, **kwargs: Any) -> Any:
+        super().delete(*args, **kwargs)
