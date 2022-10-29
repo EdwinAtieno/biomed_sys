@@ -6,7 +6,6 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 from app.users.constants import USER_GROUPS
-from app.users.models import RegistrationDetail
 from app.users.validators import (
     phone_number_validator,
     staff_number_validator,
@@ -53,7 +52,6 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(min_length=8, write_only=True)
     roles = serializers.SerializerMethodField()
     role = serializers.CharField(max_length=255, write_only=True)
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = User
@@ -63,7 +61,6 @@ class UserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "role",
-            "user",
             "middle_name",
             "roles",
             "phone_number",
@@ -113,11 +110,7 @@ class UserSerializer(serializers.ModelSerializer):
         Create a new user with the provided data
         """
         role = validated_data.pop("role")
-        logged_in_user = validated_data.pop("user")
         user = User.objects.create_user(**validated_data)
-        RegistrationDetail.objects.create(
-            user=user, registered_by=logged_in_user
-        )
         group, _ = Group.objects.get_or_create(name=role)
         user.groups.add(group)
 

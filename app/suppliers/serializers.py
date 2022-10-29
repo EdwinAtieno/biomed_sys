@@ -21,7 +21,7 @@ class ContactPersonSerializer(serializers.ModelSerializer):
             "contact_person_name",
             "contact_person_email",
             "contact_person_phone_number",
-            "contact_person_remarks",
+            "contact_person_address",
         )
         read_only_fields = ("id", "created_by")
 
@@ -47,7 +47,6 @@ class SupplierSerializer(serializers.ModelSerializer):
     supplier_email = serializers.EmailField(max_length=255)
     supplier_website = serializers.CharField(max_length=255)
     supplier_remarks = serializers.CharField(max_length=255)
-    created_by = serializers.DateTimeField(read_only=True)
     contact_person = serializers.CharField(
         source="ContactPerson.contact_person_name", max_length=255
     )
