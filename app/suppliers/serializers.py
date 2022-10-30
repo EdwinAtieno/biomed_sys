@@ -21,7 +21,7 @@ class ContactPersonSerializer(serializers.ModelSerializer):
             "contact_person_name",
             "contact_person_email",
             "contact_person_phone_number",
-            "contact_person_remarks",
+            "contact_person_address",
         )
         read_only_fields = ("id", "created_by")
 
