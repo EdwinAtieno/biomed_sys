@@ -9,6 +9,7 @@ from rest_framework import (
     generics,
 )
 from rest_framework.permissions import (
+    AllowAny,
     IsAdminUser,
     IsAuthenticated,
 )
@@ -21,7 +22,16 @@ from app.users.serializers import UserSerializer
 User = get_user_model()
 
 
-class UserList(generics.ListCreateAPIView):
+class UsersList(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+
+    def perform_create(self, serializer: Any) -> None:
+        serializer.save()
+
+
+class UserList(generics.ListAPIView):
     """
     List all users, or create a new user by admin.
     """
