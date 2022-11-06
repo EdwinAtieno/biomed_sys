@@ -16,7 +16,9 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(max_length=255)
-    middle_name = serializers.CharField(max_length=255, required=False)
+    middle_name = serializers.CharField(
+        max_length=255, allow_blank=True, required=False
+    )
     last_name = serializers.CharField(max_length=255)
     phone_number = serializers.CharField(
         max_length=20,
