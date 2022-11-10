@@ -20,7 +20,9 @@ class EquipmentSerializer(serializers.ModelSerializer):
     asset_number = serializers.CharField(read_only=True)
     equipment_name = serializers.CharField(max_length=255)
     description = serializers.CharField(max_length=255)
-    status_remarks = serializers.CharField(max_length=255)
+    status_remarks = serializers.CharField(
+        max_length=255, allow_blank=True, allow_null=True
+    )
     equipment_serial_no = serializers.CharField(max_length=255)
 
     class Meta:
