@@ -45,7 +45,7 @@ class SupplierSerializer(serializers.ModelSerializer):
     supplier_address = serializers.CharField(max_length=255)
     supplier_contact = serializers.CharField(max_length=255)
     supplier_email = serializers.EmailField(max_length=255)
-    supplier_website = serializers.CharField(max_length=255)
+    supplier_website = serializers.CharField(max_length=255, allow_blank=True)
     supplier_remarks = serializers.CharField(max_length=255)
     contact_person = serializers.CharField(
         source="ContactPerson.contact_person_name", max_length=255
