@@ -3,6 +3,7 @@ from typing import Any
 from django.utils import timezone
 from rest_framework import serializers
 
+from app.departments.models import Department
 from app.equipments.constant import (
     EQUIPMENT_STATUS,
     EQUIPMENT_TYPE,
@@ -14,8 +15,14 @@ class EquipmentSerializer(serializers.ModelSerializer):
     status = serializers.ChoiceField(
         choices=EQUIPMENT_STATUS, default="active"
     )
-    equipment_type = serializers.ChoiceField(
+    equipment_type = serializers.CharField(
+        max_length=255, allow_blank=True, allow_null=True
+    )
+    equipment_model = serializers.ChoiceField(
         choices=EQUIPMENT_TYPE, default="lease"
+    )
+    department = serializers.PrimaryKeyRelatedField(
+        queryset=Department.objects.all()
     )
     asset_number = serializers.CharField(read_only=True)
     equipment_name = serializers.CharField(max_length=255)
