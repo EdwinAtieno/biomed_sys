@@ -23,7 +23,6 @@ class EquipmentSerializer(serializers.ModelSerializer):
         choices=EQUIPMENT_TYPE, default="lease"
     )
     department = serializers.SlugRelatedField(
-        many=True,
         slug_field="department_name",
         queryset=Department.objects.all(),
     )
