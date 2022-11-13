@@ -21,6 +21,6 @@ class IsBioMedorAdmin(BasePermission):
         ):
             return True
 
-        if obj.user == request.user or request.user.is_superuser:
+        if request.user.is_superuser:
             return True
         return False
