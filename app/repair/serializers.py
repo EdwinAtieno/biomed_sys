@@ -9,10 +9,10 @@ from app.suppliers.models import Supplier
 
 class RepairSerializer(serializers.ModelSerializer):
     equipment = serializers.SlugRelatedField(
-        slug_field="Equipment.equipment_name", queryset=Equipment.objects.all()
+        slug_field="equipment_name", queryset=Equipment.objects.all()
     )
     supplier = serializers.SlugRelatedField(
-        slug_field="Supplier.supplier_name", queryset=Supplier.objects.all()
+        slug_field="supplier_name", queryset=Supplier.objects.all()
     )
     repair_date = serializers.DateField(allow_null=True)
     repair_cost = serializers.DecimalField(max_digits=10, decimal_places=2)
