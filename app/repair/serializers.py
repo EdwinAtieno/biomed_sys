@@ -2,15 +2,17 @@ from typing import Any
 
 from rest_framework import serializers
 
+from app.equipments.models import Equipment
 from app.repair.models import Repair
+from app.suppliers.models import Supplier
 
 
 class RepairSerializer(serializers.ModelSerializer):
-    equipment = serializers.CharField(
-        source="Equipment.equipment_name", max_length=255
+    equipment = serializers.SlugRelatedField(
+        slug_field="Equipment.equipment_name", queryset=Equipment.objects.all()
     )
-    supplier = serializers.CharField(
-        source="Supplier.supplier_name", max_length=255
+    supplier = serializers.SlugRelatedField(
+        slug_field="Supplier.supplier_name", queryset=Supplier.objects.all()
     )
     repair_date = serializers.DateField(allow_null=True)
     repair_cost = serializers.DecimalField(max_digits=10, decimal_places=2)
