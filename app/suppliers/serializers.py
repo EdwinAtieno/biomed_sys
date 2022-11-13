@@ -47,7 +47,11 @@ class SupplierSerializer(serializers.ModelSerializer):
     supplier_email = serializers.EmailField(max_length=255)
     supplier_website = serializers.CharField(max_length=255, allow_blank=True)
     supplier_remarks = serializers.CharField(max_length=255)
-    contact_person = serializers.SerializerMethodField()
+    contact_person = serializers.SlugRelatedField(
+        many=True,
+        slug_field="contact_person_name",
+        queryset=ContactPerson.objects.all(),
+    )
 
     class Meta:
         model = Supplier

@@ -9,6 +9,7 @@ from app.equipments.constant import (
     EQUIPMENT_TYPE,
 )
 from app.equipments.models import Equipment
+from app.suppliers.models import Supplier
 
 
 class EquipmentSerializer(serializers.ModelSerializer):
@@ -21,8 +22,13 @@ class EquipmentSerializer(serializers.ModelSerializer):
     equipment_model = serializers.ChoiceField(
         choices=EQUIPMENT_TYPE, default="lease"
     )
-    department = serializers.PrimaryKeyRelatedField(
-        queryset=Department.objects.all()
+    department = serializers.SlugRelatedField(
+        many=True,
+        slug_field="department_name",
+        queryset=Department.objects.all(),
+    )
+    supplier = serializers.SlugRelatedField(
+        slug_field="supplier_name", queryset=Supplier.objects.all()
     )
     asset_number = serializers.CharField(read_only=True)
     equipment_name = serializers.CharField(max_length=255)
