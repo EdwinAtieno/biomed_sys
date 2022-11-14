@@ -3,7 +3,7 @@ EQUIPMENT_STATUS = (
     ("broken", "broken"),
     ("repaired", "repaired"),
     ("out of service", "out of service"),
-    ("in maintenance", "in maintenance"),
+    ("under maintenance", "under maintenance"),
 )
 
 EQUIPMENT_TYPE = (
