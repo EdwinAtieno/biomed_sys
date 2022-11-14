@@ -9,7 +9,7 @@ from app.suppliers.models import Supplier
 
 class RepairSerializer(serializers.ModelSerializer):
     equipment = serializers.SlugRelatedField(
-        slug_field="equipment_name", queryset=Equipment.objects.all()
+        slug_field="asset_number", queryset=Equipment.objects.all()
     )
     supplier = serializers.SlugRelatedField(
         slug_field="supplier_name", queryset=Supplier.objects.all()
