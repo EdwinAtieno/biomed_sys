@@ -52,6 +52,7 @@ class EquipmentSerializer(serializers.ModelSerializer):
             "equipment_model",
             "equipment_serial_no",
             "description",
+            "transfer_to",
             "status",
             "status_remarks",
             "department",
@@ -86,12 +87,15 @@ class EquipmentStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Equipment
-        fields = ("asset_number", "status", "status_remarks")
+        fields = ("asset_number", "status", "status_remarks", "transfer_to")
 
     def update(self, instance: Any, validated_data: Any) -> Any:
         instance.status = validated_data.get("status", instance.status)
         instance.status_remarks = validated_data.get(
             "status_remarks", instance.status_remarks
+        )
+        instance.transfer_to = validated_data.get(
+            "transfer_to", instance.transfer_to
         )
         instance.reported_on = None
         instance.repaired_on = None
