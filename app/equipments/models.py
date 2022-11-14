@@ -34,6 +34,7 @@ class Equipment(EquipmentAssetNumberModel, TimeStampedModel):
     reported_on = models.DateTimeField(
         null=True, blank=True, verbose_name=_("update date and time")
     )
+    transfer_to = models.CharField(max_length=255, null=True, blank=True)
     created_by = models.ForeignKey(
         User,
         on_delete=models.PROTECT,

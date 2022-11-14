@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.contrib.auth import get_user_model
 from django.utils import timezone
 from rest_framework import serializers
 
@@ -11,6 +12,8 @@ from app.equipments.constant import (
 from app.equipments.models import Equipment
 from app.suppliers.models import Supplier
 
+User = get_user_model()
+
 
 class EquipmentSerializer(serializers.ModelSerializer):
     status = serializers.ChoiceField(
@@ -21,6 +24,9 @@ class EquipmentSerializer(serializers.ModelSerializer):
     )
     equipment_model = serializers.ChoiceField(
         choices=EQUIPMENT_TYPE, default="lease"
+    )
+    transfer_to = serializers.CharField(
+        max_length=255, allow_blank=True, allow_null=True
     )
     department = serializers.SlugRelatedField(
         slug_field="department_name",
