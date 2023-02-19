@@ -5,7 +5,7 @@ from nh_sys.settings.base import (
     CORS_ORIGIN_WHITELIST,
 )
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS += [
     ".herokuapp.com",
@@ -22,6 +22,7 @@ CORS_ALLOWED_ORIGIN_REGEXES += [
     r"^(http?:\/\/)?((localhost)|(127\.0\.0\.1)):3\d{3}",
     r"^(http?:\/\/)?((localhost)|(127\.0\.0\.1)):5\d{3}",
     r"^https:\/\/nh-sys-*",
+    "https://biomedsys-production.up.railway.app",
     r"^https:\/\/biomedsys-*",
     r"(^|^[^:]+:\/\/|[^\.]+\.)nh-sys\.co\.ke",
 ]
