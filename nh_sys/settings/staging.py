@@ -8,13 +8,13 @@ DEBUG = True
 
 ALLOWED_HOSTS += [
     ".herokuapp.com",
-    "*",
+    ".railway.app",
 ]
 
 CORS_ALLOWED_ORIGINS += [
     "https://nh_sys-fend-pwa.herokuapp.com",
     "https://nh_sys-proxy.herokuapp.com",
-    "*",
+    "https://nh_sys.netlify.app",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES += [
@@ -22,5 +22,4 @@ CORS_ALLOWED_ORIGIN_REGEXES += [
     r"^(http?:\/\/)?((localhost)|(127\.0\.0\.1)):5\d{3}",
     r"^https:\/\/nh_sys-*",
     r"(^|^[^:]+:\/\/|[^\.]+\.)nh_sys\.co\.ke",
-    "*",
 ]
