@@ -120,19 +120,46 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_RENDERER_CLASSES": [
-        "rest_framework.renderers.JSONRenderer",
-    ],
-    "DEFAULT_AUTHENTICATION_CLASSES": [
+    "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ],
-    "DEFAULT_PARSER_CLASSES": [
-        "rest_framework.parsers.JSONParser",
-        "rest_framework.parsers.MultiPartParser",
-    ],
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+    "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
+    "DEFAULT_PARSER_CLASSES": ("rest_framework.parsers.JSONParser",),
+    "DEFAULT_METADATA_CLASS": "rest_framework.metadata.SimpleMetadata",
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
+        "rest_framework.filters.SearchFilter",
+    ),
+    "DEFAULT_THROTTLE_CLASSES": (
+        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.UserRateThrottle",
+    ),
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "100/day",
+        "user": "1000/day",
+    },
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 10,
+    "PAGE_SIZE": 100,
+    "UNAUTHENTICATED_USER": None,
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    "DEFAULT_CONTENT_NEGOTIATION_CLASS": "rest_framework.negotiation.DefaultContentNegotiation",
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "TEST_REQUEST_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
+    ),
+    "TEST_REQUEST_PARSER_CLASSES": ("rest_framework.parsers.JSONParser",),
+    "COERCE_DECIMAL_TO_STRING": False,
+    "CSRF_COOKIE_NAME": "csrftoken",
+    "CSRF_HEADER_NAME": "HTTP_X_CSRFTOKEN",
+    "CSRF_COOKIE_SECURE": False,
+    "CSRF_COOKIE_HTTPONLY": False,
+    "CSRF_USE_SESSIONS": False,
+    "FORM_METHOD_OVERRIDE": None,
+    "FORM_CONTENT_OVERRIDE": None,
+    "HTML_SELECT_CUTOFF": 1000,
+    "URL_FORMAT_OVERRIDE": None,
 }
 
 # CORS settings
