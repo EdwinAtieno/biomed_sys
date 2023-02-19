@@ -5,7 +5,7 @@ from nh_sys.settings.base import (
     CORS_ORIGIN_WHITELIST,
 )
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS += [
     ".herokuapp.com",
