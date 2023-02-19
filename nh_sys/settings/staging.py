@@ -9,6 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS += [
     ".herokuapp.com",
+    "https://biomedsys-production.up.railway.app",
     ".railway.app",
 ]
 
