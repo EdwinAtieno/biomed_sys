@@ -139,6 +139,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS: List[str] = []
 CORS_ALLOWED_ORIGIN_REGEXES: List[str] = []
 CORS_URLS_REGEX = r"^/api/.*$"
+CORS_ORIGIN_WHITELIST: List[str] = []
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
