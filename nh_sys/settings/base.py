@@ -166,6 +166,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS: List[str] = []
 CORS_ALLOWED_ORIGIN_REGEXES: List[str] = []
 CORS_URLS_REGEX = r"^/api/.*$"
+CSRF_TRUSTED_ORIGINS = ["https://biomedsys-production.up.railway.app"]
 CORS_ORIGIN_WHITELIST: List[str] = []
 
 SIMPLE_JWT = {
