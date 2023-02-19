@@ -10,7 +10,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from app.abstract import (
-    IDModel,
+    IntegerIDModel,
     TimeStampedModel,
 )
 from app.users.validators import (
@@ -58,7 +58,9 @@ class UserManager(BaseUserManager):
         return superuser
 
 
-class User(AbstractBaseUser, PermissionsMixin, IDModel, TimeStampedModel):
+class User(
+    AbstractBaseUser, PermissionsMixin, IntegerIDModel, TimeStampedModel
+):
     first_name = models.CharField(max_length=255, verbose_name="First Name")
     middle_name = models.CharField(
         max_length=255, verbose_name="Middle Name", blank=True, null=True
